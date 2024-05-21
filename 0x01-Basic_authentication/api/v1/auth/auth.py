@@ -20,12 +20,10 @@ class Auth:
         if path is None or excluded_paths is None:
             return True
 
-        if path in excluded_paths:
-            return False
-
         for exec_path in excluded_paths:
             if fnmatch.fnmatch(path, exec_path):
                 return False
+
         return True
 
     def authorization_header(self, request=None) -> str:
