@@ -17,7 +17,11 @@ class Auth:
         """
          Method to check if auth is required.
         """
-        return False
+        if path is None or excluded_paths is None:
+            return True
+        if path in excluded_paths:
+            return False
+        return True
 
     def authorization_header(self, request=None) -> str:
         """
